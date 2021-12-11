@@ -47,22 +47,61 @@
             </objects>
             <point key="canvasLocation" x="231" y="159"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Home-->
         <scene sceneID="EBv-OZ-h3d">
             <objects>
-                <tableViewController id="vsN-4E-QXd" sceneMemberID="viewController">
+                <tableViewController id="vsN-4E-QXd" customClass="HomeTableViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="CBl-jj-8vD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Aak-Nt-Jlu">
-                                <rect key="frame" x="0.0" y="44.5" width="320" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tweetCell" rowHeight="120" id="Aak-Nt-Jlu" customClass="TweetCellTableViewCell" customModule="Twitter" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="320" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Aak-Nt-Jlu" id="QqC-HB-Say">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9BB-YT-lYE">
+                                            <rect key="frame" x="16" y="11" width="65" height="65"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="65" id="9ec-jk-GQd"/>
+                                                <constraint firstAttribute="height" constant="65" id="xXH-Cc-jFv"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jon Dow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppt-sE-8k6">
+                                            <rect key="frame" x="89" y="11" width="74" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="22" id="8zl-vh-uqp"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweet Content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vR-N7-IUn">
+                                            <rect key="frame" x="89" y="49" width="215" height="60"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ppt-sE-8k6" firstAttribute="leading" secondItem="9BB-YT-lYE" secondAttribute="trailing" constant="8" symbolic="YES" id="ADc-wB-5mg"/>
+                                        <constraint firstItem="9BB-YT-lYE" firstAttribute="top" secondItem="QqC-HB-Say" secondAttribute="topMargin" id="EWo-Cn-eQH"/>
+                                        <constraint firstItem="9BB-YT-lYE" firstAttribute="leading" secondItem="QqC-HB-Say" secondAttribute="leadingMargin" id="RlA-eH-Vg9"/>
+                                        <constraint firstItem="9vR-N7-IUn" firstAttribute="leading" secondItem="9BB-YT-lYE" secondAttribute="trailing" constant="8" symbolic="YES" id="aBX-LP-MPn"/>
+                                        <constraint firstItem="ppt-sE-8k6" firstAttribute="top" secondItem="QqC-HB-Say" secondAttribute="topMargin" id="aZ1-Cv-Dqk"/>
+                                        <constraint firstItem="9vR-N7-IUn" firstAttribute="top" secondItem="ppt-sE-8k6" secondAttribute="bottom" constant="16" id="f8j-a3-ny7"/>
+                                        <constraint firstItem="9vR-N7-IUn" firstAttribute="bottom" secondItem="QqC-HB-Say" secondAttribute="bottomMargin" id="ljb-k9-VUP"/>
+                                        <constraint firstItem="9vR-N7-IUn" firstAttribute="trailing" secondItem="QqC-HB-Say" secondAttribute="trailingMargin" id="wAg-cZ-Asg"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="profileImageView" destination="9BB-YT-lYE" id="0kg-F0-fuD"/>
+                                    <outlet property="tweetContent" destination="9vR-N7-IUn" id="nNn-6f-NId"/>
+                                    <outlet property="userNameLabel" destination="ppt-sE-8k6" id="wAt-5l-jNk"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -70,11 +109,19 @@
                             <outlet property="delegate" destination="vsN-4E-QXd" id="tcU-Cz-2IL"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="q8o-Ij-f3o"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Home" id="q8o-Ij-f3o">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="JYu-dH-HrM">
+                            <connections>
+                                <action selector="onLogout:" destination="vsN-4E-QXd" id="iza-qO-7H2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wuF-uO-Hlq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2164" y="158"/>
+            <point key="canvasLocation" x="2163.75" y="157.3943661971831"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Orl-Nf-n3z">
@@ -83,6 +130,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KAF-3X-Inf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="standardAppearance"/>
+                        <navigationBarAppearance key="scrollEdgeAppearance"/>
                     </navigationBar>
                     <connections>
                         <segue destination="vsN-4E-QXd" kind="relationship" relationship="rootViewController" id="cm1-DN-DeX"/>
